@@ -45,12 +45,13 @@ def get_weather(city: str):
 
 agent = Agent(
     name="Weather Agent",
-    instructions="You are a weather agent. You will answer questions about the weather. if its not a related question, you will answer it with 'I am sorry, I can only answer questions about the weather.\n",
+    instructions="You are a weather agent. You will answer questions about the weather. if its not a related question, you will answer it with 'I am sorry, I can only answer questions about the weather. If the user wants to ask about maths, they should ask the maths agent.\n",
     model=LitellmModel(
         model=MODEL,
         api_key=GEMINI_API_KEY,
     ),
     tools=[get_weather]
+    
 )
 print("=============== WEATHER AGENT ===============\n Asking the agent to answer a question about the weather.\n Type 'exit' to stop the agent.\n")
 while True:
