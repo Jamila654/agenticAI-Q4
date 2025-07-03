@@ -3,7 +3,6 @@ import os
 from dotenv import load_dotenv
 from agents import Agent, AsyncOpenAI, OpenAIChatCompletionsModel, set_tracing_disabled
 
-# Load environment variables
 load_dotenv()
 from context import UserSessionContext
 from tools.goal_analyzer import goal_analyzer_tool
@@ -14,6 +13,8 @@ from tools.tracker import progress_tracker_tool
 from custom_agents.escalation_agent import create_escalation_agent
 from custom_agents.nutrition_expert_agent import create_nutrition_expert_agent
 from custom_agents.injury_support_agent import create_injury_support_agent
+from guardrails import input_health_guardrail
+from guardrails import output_health_guardrail
 
 set_tracing_disabled(True)
 
@@ -38,7 +39,7 @@ def create_health_agent():
         - Format tool calls clearly and separately.
         When users ask for meal plans, workout routines, or goal analysis, USE THE APPROPRIATE TOOLS IMMEDIATELY to provide helpful content.
         Tools have default parameters, so use them even if the user doesn't specify all details.
-        ALWAYS INCLUDE THE COMPLETE TOOL RESULTS IN YOUR RESPONSE - don't just say 'I've created a plan', show the actual plan details.
+        ALWAYS INCLUDE THE COMPLETE TOOL RESULTS IN YOUR RESPONSE - don't just say 'I've created a plan'.
         Be encouraging and supportive. Provide immediate value first, then ask follow-up questions for improvements.
         If users mention injuries, complex dietary needs, or want human support, use handoffs.
         """,
@@ -55,5 +56,7 @@ def create_health_agent():
             create_nutrition_expert_agent(),
             create_injury_support_agent()
         ],
-        model=model
+        model=model,
+        input_guardrails=[input_health_guardrail],
+        output_guardrails=[output_health_guardrail]
     )

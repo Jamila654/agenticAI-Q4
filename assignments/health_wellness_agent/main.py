@@ -5,6 +5,8 @@ from utils.streamingformain import stream_conversation
 from hooks import HealthPlannerHooks, HealthPlannerRunHooks
 from dotenv import load_dotenv
 from agent import create_health_agent
+from guardrails import InputGuardrailTripwireTriggered
+from guardrails import OutputGuardrailTripwireTriggered
 
 load_dotenv()
 
@@ -76,6 +78,12 @@ async def main():
                     traceback.print_exc()
                     print("-"*40)
                     
+    except InputGuardrailTripwireTriggered as e:
+        reason = e.guardrail_result.reasoning
+        print(f"❌ Input rejected by guardrail: {reason}")
+    except OutputGuardrailTripwireTriggered as e:
+        reason = e.guardrail_result.reasoning
+        print(f"⚠️ Output blocked by guardrail: {reason}")      
     except KeyboardInterrupt:
         print("\n👋 Stay healthy! Goodbye!")
     except Exception as e:
