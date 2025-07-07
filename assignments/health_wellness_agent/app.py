@@ -12,6 +12,7 @@ from agent import create_health_agent
 from utils.streamingformain import stream_conversation
 from hooks import HealthPlannerHooks, HealthPlannerRunHooks
 from guardrails import InputGuardrailTripwireTriggered, OutputGuardrailTripwireTriggered
+from fastapi.middleware.cors import CORSMiddleware
 
 # load_dotenv()
 gemini_api_key = os.getenv("GEMINI_API_KEY")
@@ -22,6 +23,14 @@ app = FastAPI(
     title="Health & Wellness Assistant API",
     description="API for a Health & Wellness chatbot assistant with goal analysis, meal planning, workouts, and tracking.",
     version="0.1.0"
+)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["https://agentic-ai-q4-lfx4.vercel.app/", "http://localhost:3000"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 class ChatRequest(BaseModel):
