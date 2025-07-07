@@ -11,21 +11,13 @@ export default function Home() {
   const sendMessage = async () => {
     if (!message.trim()) return
 
-    // Add only the user message
     const userMessage = { user: message }
     setChat((prev) => [...prev, userMessage])
     setIsLoading(true)
 
     try {
-      console.log("Sending request to:", "https://prac-assignments-q4.vercel.app/chat/")
-      console.log("Request body:", {
-        user_id: "test_user",
-        text: message,
-        metadata: null,
-        tags: null,
-      })
-
-      const res = await fetch("https://prac-assignments-q4.vercel.app/chat/", {
+      // Use the Next.js API route instead of direct FastAPI call
+      const res = await fetch("/api/chat", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -38,23 +30,14 @@ export default function Home() {
         }),
       })
 
-      console.log("Response status:", res.status)
-      console.log("Response headers:", res.headers)
-
       if (!res.ok) {
-        const errorText = await res.text()
-        console.error("Error response:", errorText)
-        throw new Error(`HTTP error! status: ${res.status}, message: ${errorText}`)
+        throw new Error(`HTTP error! status: ${res.status}`)
       }
 
       const data = await res.json()
-      console.log("Response data:", data)
-
-      // Append only the bot response
       setChat((prev) => [...prev, { user: message, bot: data.reply }])
     } catch (error) {
-      console.error("Detailed error:", error)
-      // Append error message without duplicating user input
+      console.error("Error:", error)
       setChat((prev) => [
         ...prev,
         { user: message, bot: `Error: ${error instanceof Error ? error.message : "Could not get response"}` },
@@ -88,7 +71,6 @@ export default function Home() {
 
           {chat.map((msg, index) => (
             <div key={index} className="mb-4">
-              {/* User Message */}
               {msg.user && !msg.bot && (
                 <div className="flex justify-end">
                   <div className="bg-blue-100 text-gray-800 p-2 rounded-lg max-w-xs">
@@ -137,10 +119,7 @@ export default function Home() {
               ➤
             </button>
           </div>
-          <p className="text-xs text-gray-500 mt-1">
-            This is an AI-powered assistant. Responses are automated and may not always be accurate or complete. For
-            definitive information, please contact support.
-          </p>
+          <p className="text-xs text-gray-500 mt-1">This is an AI-powered assistant.</p>
         </div>
       </div>
     </div>
