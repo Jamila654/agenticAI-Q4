@@ -16,7 +16,6 @@ export default function Home() {
     setIsLoading(true)
 
     try {
-      // Use the Next.js API route instead of direct FastAPI call
       const res = await fetch("/api/chat", {
         method: "POST",
         headers: {
@@ -61,9 +60,9 @@ export default function Home() {
         <div className="bg-purple-100 p-3 rounded-t-xl flex items-center gap-2">
           <div className="w-8 h-8 bg-purple-300 rounded-full flex items-center justify-center">🤖</div>
           <h2 className="text-lg font-semibold text-gray-800">AI Chatbot</h2>
-          <p className="ml-auto text-sm text-gray-500" suppressHydrationWarning={true}>
+          {/* <p className="ml-auto text-sm text-gray-500" suppressHydrationWarning={true}>
             {new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
-          </p>
+          </p> */}
         </div>
 
         <div ref={chatContainerRef} className="p-4 bg-purple-50 h-96 overflow-y-auto">

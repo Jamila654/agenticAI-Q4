@@ -1,0 +1,5 @@
+fastapi[standard]
+nest-asyncio
+openai-agents
+pydantic
+uvicorn
