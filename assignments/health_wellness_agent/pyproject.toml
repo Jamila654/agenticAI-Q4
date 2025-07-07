@@ -5,6 +5,7 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
+    "fastapi[standard]>=0.115.14",
     "nest-asyncio>=1.6.0",
     "openai-agents>=0.1.0",
     "pyarrow==16.0.0",
