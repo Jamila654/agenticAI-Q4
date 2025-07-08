@@ -27,7 +27,7 @@ app = FastAPI(
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://agentic-ai-q4-lfx4.vercel.app/", "http://localhost:3000"],
+    allow_origins=["https://agentic-ai-q4-lfx4.vercel.app/", "http://localhost:3000", "https://healthwellness-two.vercel.app/"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
