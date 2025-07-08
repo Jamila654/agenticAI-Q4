@@ -43,7 +43,6 @@ def create_health_agent():
         Be encouraging and supportive. Provide immediate value first, then ask follow-up questions for improvements.
         If users mention injuries, complex dietary needs, or want human support, use handoffs.
         """,
-
         tools=[
             goal_analyzer_tool,
             meal_planner_tool,

@@ -3,6 +3,7 @@ from agents import Runner, Agent
 from context import UserSessionContext
 from openai.types.responses import ResponseTextDeltaEvent
 
+
 def get_tool_name_from_item(item) -> str:
     """Extract tool name from stream item, prioritizing raw_item.name."""
     if not item:
@@ -100,4 +101,7 @@ async def stream_conversation(agent: Agent[UserSessionContext], user_input: str,
         import traceback
         traceback.print_exc()
         print("Please try rephrasing your question.")
+
+
+
 
