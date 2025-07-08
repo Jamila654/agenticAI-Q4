@@ -90,7 +90,17 @@ async def input_health_guardrail(
 output_guardrail_agent = Agent(
     name="HealthOutputGuard",
     instructions="""
-You are a guardrail agent that verifies whether the assistant's response is appropriate and relevant to health and wellness topics setting a scheduled check-in or progress tracking.
+You are a guardrail agent that checks if the assistant's response is appropriate for a health and wellness conversation. Return true if the response:
+- Addresses health, fitness, nutrition, or wellness (e.g., workout plans, exercise advice, meal plans, or wellness tips)
+- Engages the user in a health or wellness context (e.g., asking questions to clarify goals, confirming input, or prompting further discussion)
+- Responds to user inputs like affirmations (e.g., 'yes,' 'okay,' 'continue') to keep the health or wellness conversation going
+- Provides general encouragement or support related to health and wellness
+
+Return false only if the response:
+- Is clearly unrelated to health and wellness (e.g., discussing unrelated topics like programming, politics, or entertainment)
+- Contains harmful, inappropriate, or offensive content
+
+Your goal is to allow all relevant health and wellness responses, including direct answers, follow-up questions, or conversational prompts, while blocking only clearly irrelevant or harmful content.
 """,
     output_type=HealthOutputCheck,
     model=model
