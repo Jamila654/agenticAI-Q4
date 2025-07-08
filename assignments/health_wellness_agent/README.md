@@ -1,45 +1,36 @@
 # 🧠 Health & Wellness AI Assistant
 
 ## Overview
+The Health & Wellness AI Assistant is a cutting-edge conversational AI designed to empower users in achieving their fitness and health goals. Built with advanced natural language processing and a modular architecture, it offers personalized, data-driven support for a healthier lifestyle.
 
-The **Health & Wellness AI Assistant** is an intelligent, conversational agent designed to help users achieve their fitness and health goals. Leveraging cutting-edge natural language processing and a modular tool-based architecture, this assistant delivers:
+### Features
+- 🎯 **Personalized Goal Analysis:** Interprets user health objectives from natural language input.
+- 🥗 **Custom Meal Planning:** Generates 7-day meal plans for dietary preferences (e.g., vegetarian, keto, balanced).
+- 🏋️‍♀️ **Workout Recommendations:** Delivers fitness routines tailored to user goals and experience levels.
+- 📈 **Progress Tracking:** Monitors progress with motivational feedback.
+- 📅 **Automated Check-ins:** Schedules regular reminders for consistency.
+- 🤖 **Expert Agent Handoff:** Routes complex queries to specialized agents for nutrition, injury support, or human assistance.
+- 🧠 **Context-Aware:** Retains user goals, preferences, and conversation history.
+- 🧱 **Modular Design:** Easily extensible with plug-and-play tools and agents.
 
-- 🎯 Personalized goal analysis  
-- 🥗 Meal planning tailored to dietary preferences  
-- 🏋️‍♀️ Custom workout recommendations  
-- 📈 Progress tracking  
-- 📅 Automated check-in scheduling  
-- 🤖 Handoff to expert agents (nutrition, injury support, human assistance)
+## 🚀 Architecture
+The project leverages a modular, agent-based framework:
 
-Built with a context-aware framework, the assistant ensures personalized, seamless, and scalable interactions.
+- **Agent Core:** Manages conversation flow, context, and tool orchestration.
+- **Tools:** Async modules for meal planning, workout generation, scheduling, and tracking.
+- **Context Model:** Stores session-specific data like goals and progress logs.
+- **Lifecycle Hooks:** Ensures robust logging and monitoring.
+- **Custom Agents:** Handles escalations and expert-level advice.
+- **Gemini Integration:** Powered by Gemini-2.0-Flash for advanced natural language processing.
 
----
+## 🌐 Deployment
 
-## 🚀 Features
+- **FastAPI Backend:** [https://agentic-ai-q4-lfx4.vercel.app/](https://agentic-ai-q4-lfx4.vercel.app/)
+- **Next.js Frontend:** [https://healthwellness-two.vercel.app/](https://healthwellness-two.vercel.app/)
 
-- **Goal Analysis**: Understands and structures user health goals from natural language input.
-- **Meal Planning**: Creates 7-day meal plans (e.g., vegetarian, keto, balanced).
-- **Workout Recommendations**: Tailors routines to user fitness levels and goals.
-- **Progress Tracking**: Logs progress with motivational updates.
-- **Check-in Scheduling**: Sets automated check-ins to maintain consistency.
-- **Agent Handoffs**: Routes complex queries to expert or escalation agents.
-- **Context Awareness**: Remembers goals, preferences, and past conversations.
-- **Modular Design**: Easy to maintain and extend with tools and custom agents.
+## 🛠️ Getting Started
 
----
-
-## 🧱 Architecture
-
-The project is built on a modular agent-based framework consisting of:
-
-- **Agent Core**: Handles conversation flow, context, and tool management.
-- **Tools**: Async modules for meal planning, scheduling, tracking, etc.
-- **Context Model**: Stores session-specific data like goals and logs.
-- **Lifecycle Hooks**: Logging and monitoring mechanisms for robust operation.
-- **Custom Agents**: Specialized agents for escalation and expertise.
-- **Gemini Integration**: Uses `Gemini-2.0-Flash` for natural language understanding.
-
----  
-fastapi vercel link: https://agentic-ai-q4-lfx4.vercel.app/
-
+1. Visit the Next.js frontend to interact with the AI Assistant.
+2. Access the FastAPI backend for API integrations.
+3. Contribute by cloning the repository and extending functionality with custom tools or agents.
 
