@@ -16,21 +16,14 @@ The Health & Wellness AI Assistant is a cutting-edge conversational AI designed 
 ## 🚀 Architecture
 The project leverages a modular, agent-based framework:
 
-- **Agent Core:** Manages conversation flow, context, and tool orchestration.
-- **Tools:** Async modules for meal planning, workout generation, scheduling, and tracking.
-- **Context Model:** Stores session-specific data like goals and progress logs.
-- **Lifecycle Hooks:** Ensures robust logging and monitoring.
-- **Custom Agents:** Handles escalations and expert-level advice.
-- **Gemini Integration:** Powered by Gemini-2.0-Flash for advanced natural language processing.
+- **Agent Core**: Handles conversation flow, context, and tool management.
+- **Tools**: Async modules for meal planning, scheduling, tracking, etc.
+- **Context Model**: Stores session-specific data like goals and logs.
+- **Lifecycle Hooks**: Logging and monitoring mechanisms for robust operation.
+- **Custom Agents**: Specialized agents for escalation and expertise.
+- **Gemini Integration**: Uses `Gemini-2.0-Flash` for natural language understanding.
 
-## 🌐 Deployment
+---  
+fastapi vercel link: https://agentic-ai-q4-lfx4.vercel.app/
 
-- **FastAPI Backend:** [https://agentic-ai-q4-lfx4.vercel.app/](https://agentic-ai-q4-lfx4.vercel.app/)
-- **Next.js Frontend:** [https://healthwellness-two.vercel.app/](https://healthwellness-two.vercel.app/)
-
-## 🛠️ Getting Started
-
-1. Visit the Next.js frontend to interact with the AI Assistant.
-2. Access the FastAPI backend for API integrations.
-3. Contribute by cloning the repository and extending functionality with custom tools or agents.
 
