@@ -39,6 +39,7 @@ The project is built on a modular agent-based framework consisting of:
 - **Custom Agents**: Specialized agents for escalation and expertise.
 - **Gemini Integration**: Uses `Gemini-2.0-Flash` for natural language understanding.
 
----       # On Windows: venv\Scripts\activate
+---  
+fastapi vercel link: https://agentic-ai-q4-lfx4.vercel.app/
 
 
