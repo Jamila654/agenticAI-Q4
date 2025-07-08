@@ -25,5 +25,6 @@ The project leverages a modular, agent-based framework:
 
 ---  
 fastapi vercel link: https://agentic-ai-q4-lfx4.vercel.app/
+nextjs link: https://healthwellness-two.vercel.app/
 
 
