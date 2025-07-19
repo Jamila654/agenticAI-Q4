@@ -4,6 +4,7 @@ from config import model
 from context import UserInfo
 from tools.python_teacher import python_tool
 from pydantic import BaseModel
+from hooks import DemoAgentHooks
 
 class EscalationData(BaseModel):
     reason: str
@@ -17,6 +18,7 @@ python_agent = Agent[UserInfo](
     instructions="You are a Python teacher. For any Python-related question, always call python_tool with the full query. Do not generate code or explanations directly.",
     model=model,
     tools=[python_tool],
+    hooks=DemoAgentHooks()
 )
 
 handoff_obj_python = handoff(

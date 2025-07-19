@@ -5,6 +5,7 @@ from context import UserInfo
 from agent.maths import handoff_obj_math
 from agent.python import handoff_obj_python
 from guardrails import input_maths_or_python_guardrail, output_maths_or_python_guardrail
+from hooks import DemoAgentHooks
 
 
 
@@ -18,5 +19,6 @@ main_agent = Agent[UserInfo](
     ],
     input_guardrails=[input_maths_or_python_guardrail],
     output_guardrails=[output_maths_or_python_guardrail],
+    hooks=DemoAgentHooks()
 )
 
