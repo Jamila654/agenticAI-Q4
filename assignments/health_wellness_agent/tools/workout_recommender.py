@@ -9,7 +9,6 @@ async def workout_recommender_tool(
     focus_area: str = "general"
 ) -> str:
     """Recommend workout plan based on user's goals and fitness level"""
-    
     # Get user's goal from context
     user_goal = wrapper.context.goal
     goal_type = user_goal.get("goal_type", "general_health") if user_goal else "general_health"
