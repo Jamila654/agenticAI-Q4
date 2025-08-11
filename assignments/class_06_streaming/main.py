@@ -10,15 +10,16 @@ def how_many_jokes() -> int:
     return random.randint(1, 10)
 
 
+
 agent = Agent(
         name="Joker",
         instructions="First call the `how_many_jokes` tool, then tell that many jokes.",
         tools=[how_many_jokes],
-        model=model
+        model=model,
     )
 async def main():
     try:
-        result = Runner.run_streamed(agent, input="Hello", run_config=config)
+        result = Runner.run_streamed(agent, input="what is the meaning of life?", run_config=config)
         async for event in result.stream_events():
             if event.type == "raw_response_event" and isinstance(event.data, ResponseTextDeltaEvent):
                 print(event.data.delta, end="", flush=True)
