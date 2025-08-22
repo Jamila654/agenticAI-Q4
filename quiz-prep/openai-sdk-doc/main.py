@@ -3,6 +3,7 @@ from agents.exceptions import InputGuardrailTripwireTriggered
 from pydantic import BaseModel
 from config import config
 import asyncio
+from dataclasses import dataclass
 
 class HomeworkOutput(BaseModel):
     is_homework: bool
@@ -43,19 +44,34 @@ triage_agent = Agent(
 )
 
 async def main():
-    # Example 1: History question
-    try:
-        result = await Runner.run(triage_agent, "who was the first president of the united states?", run_config=config)
-        print(result.final_output)
-    except InputGuardrailTripwireTriggered as e:
-        print("Guardrail blocked this input:", e)
+    # # Example 1: History question
+    # try:
+    #     result = await Runner.run(triage_agent, "who was the first president of the united states?", run_config=config)
+    #     print(result.final_output)
+    # except InputGuardrailTripwireTriggered as e:
+    #     print("Guardrail blocked this input:", e)
 
-    # Example 2: General/philosophical question
-    try:
-        result = await Runner.run(triage_agent, "What is the meaning of life?", run_config=config)
-        print(result.final_output)
-    except InputGuardrailTripwireTriggered as e:
-        print("Guardrail blocked this input:", e)
+    # # Example 2: General/philosophical question
+    # try:
+    #     result = await Runner.run(triage_agent, "What is the meaning of life?", run_config=config)
+    #     print(result.final_output)
+    # except InputGuardrailTripwireTriggered as e:
+    #     print("Guardrail blocked this input:", e)
+
+    # Agent returns structured data
+    @dataclass
+    class WeatherAnswer:
+        location: str
+        temperature_c: float
+        summary: str
+
+    agent = Agent(name="weather agent", output_type=WeatherAnswer)
+    result = await Runner.run(agent, "What's the weather in Karachi?", run_config=config)
+
+    # Perfect! Now you get structured data:
+    print(result.final_output.location)      # "Karachi"
+    print(result.final_output.temperature_c) # 30.0
+    print(result.final_output.summary)       # "clear skies"
 
 
 if __name__ == "__main__":

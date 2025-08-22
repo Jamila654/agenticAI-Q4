@@ -1,7 +1,8 @@
-from agents import Agent, Runner, SQLiteSession, ModelSettings
+from agents import Agent, Runner, SQLiteSession, enable_verbose_stdout_logging
 from openai.types.responses import ResponseTextDeltaEvent
 import asyncio
 from config import config
+enable_verbose_stdout_logging()
 async def main():
     agent = Agent(
         name="Assistant",
